@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multi upload with progressbar</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="newScript.js" defer></script>
+</head>
+<body>
+  <form method="POST" action="." enctype="multipart/form-data">
+    <div class="fileList" id="fileList"></div>
+    <label class="fileUploadLabel" id="fileUploadLabel" for="fileUploadBtn" data-message="...eller slipp filer her">
+      <span>Trykk for å velge filer</span>
+      <input type="file" name="fileupload" id="fileUploadBtn" class="fileupload" multiple data-target="uploader">
+    </label>
+    <div class="fileUploadProgress" id="fileUploadProgress"></div>
+  </form>
+
+</body>
+</html>

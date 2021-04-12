@@ -1,0 +1,95 @@
+.btn {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0;
+  padding: 0.15em .65em;
+  border: 1px solid transparent;
+  border-radius: .5rem;
+  transition: background-color 0.25s ease-out, color 0.25s ease-out;
+  font-family: inherit;
+  font-size: 0.9rem;
+  -webkit-appearance: none;
+  line-height: 1;
+  text-align: center;
+  cursor: pointer;
+  background-color: #e9e9e9;
+  color: #3f3f3f;
+  text-decoration: none;;
+}
+.active { background-color: red; }
+.finish { background-color: green; }
+.fileUploadLabel {
+  display: block;
+  padding: 2rem;
+  border: 2px dashed darkblue;
+  background-color: lightblue;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: .5rem;
+  position: relative;
+}
+.fileUploadLabel.is-dragover {
+  background-color: yellow;
+}
+.fileUploadLabel:after {
+  content: attr(data-message);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 60%;
+}
+.fileUploadLabel span {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0;
+  padding: 0.85em 1em;
+  border: 1px solid transparent;
+  border-radius: 0;
+  transition: background-color 0.25s ease-out, color 0.25s ease-out;
+  font-family: inherit;
+  font-size: 0.9rem;
+  -webkit-appearance: none;
+  line-height: 1;
+  text-align: center;
+  cursor: pointer;
+  background-color: #1779ba;
+  color: #fefefe;
+}
+.fileUploadLabel span:hover {
+  background-color: #126195;
+}
+.fileupload {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  white-space: nowrap;
+  width: 1px;
+}
+.fileUploadProgress {
+
+}
+.fileUploadProgress .progressItem {
+  margin: .5em 0;
+}
+.fileUploadProgress .progress-bar {
+  height: 2px;
+}
+.fileUploadProgress .progress-bar.active {
+  background-color: #900;
+}
+.fileUploadProgress .progress-bar.finished {
+  background-color: #090;
+}
+.fileUploadProgress .progress-status {
+
+}
+.fileUploadProgress .progress-status .progress-filename {
+  font-weight: bold;
+  display: inline-block;
+  margin-right: 1em;
+}
