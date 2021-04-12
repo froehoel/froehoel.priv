@@ -1,30 +1,33 @@
 class Uploader {
   constructor() {
-    this.fileList = document.getElementById('fileList');
-    this.fileUploadLabel = document.getElementById('fileUploadLabel');
-    this.message = this.fileUploadLabel.dataset.message;
-    this.fileUploadBtn = document.getElementById('fileUploadBtn');
+    this.fileList           = document.getElementById('fileList');
+    this.fileUploadLabel    = document.getElementById('fileUploadLabel');
+    this.message            = this.fileUploadLabel.dataset.message;
+    this.fileUploadBtn      = document.getElementById('fileUploadBtn');
     this.fileUploadProgress = document.getElementById('fileUploadProgress');
-    this.target = this.fileUploadBtn.dataset.target;
-    this.numberOfUploads = 0;
+    this.target             = this.fileUploadBtn.dataset.target;
+    this.numberOfUploads    = 0;
 
     this.addEventListeners();
   }
-  
+
   addEventListeners = () => {
     this.fileUploadBtn.addEventListener('click', this.emptyFileList);
     this.fileUploadBtn.addEventListener('change', this.uploadSetup);
+
     "drag dragstart dragend dragover dragenter dragleave drop".split(" ").forEach( e => {
       this.fileUploadLabel.addEventListener(e, event => {
         event.preventDefault();
         event.stopPropagation();
       });
     });
+
     "dragover dragenter".split(" ").forEach(e => {
       this.fileUploadLabel.addEventListener(e, () => {
         this.fileUploadLabel.classList.add('is-dragover');
       });
     });
+
     "dragleave dragend drop".split(" ").forEach(e => {
       this.fileUploadLabel.addEventListener(e, () => {
         this.fileUploadLabel.classList.remove('is-dragover');
@@ -32,7 +35,7 @@ class Uploader {
     });
     this.fileUploadLabel.addEventListener('drop', this.uploadSetup);
   }
-  
+
   emptyFileList = () => {
     if(this.fileUploadProgress.childNodes.length) {
       while(this.fileUploadProgress.firstChild) {
@@ -77,10 +80,10 @@ class Uploader {
   uploadFinish = (xhr, index) => {
     if(xhr.status === 200) {
       this.fileUploadBtn.value = '';
-      const pBar = document.getElementById(`progress-bar-${index}`);
-      const pItem = document.getElementById(`progress-${index}`);
-      const response = JSON.parse(xhr.responseText);
-      this.numberOfUploads -= 1;
+      const pBar               = document.getElementById(`progress-bar-${index}`);
+      const pItem              = document.getElementById(`progress-${index}`);
+      const response           = JSON.parse(xhr.responseText);
+      this.numberOfUploads    -= 1;
 
       pBar.classList.remove('active');
       pBar.classList.add('finish');
@@ -119,7 +122,7 @@ class Uploader {
     const progressStatus = document.getElementById(`progress-status-${index}`);
     const progressBar = document.getElementById(`progress-bar-${index}`);
     let percent = (event.loaded / event.total) * 100;
-    
+
     progressStatus.innerText = (Math.round(percent)) + '% uploaded';
     progressBar.style.width = `${percent}%`;
 }
