@@ -1,0 +1,6 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/froehoelpriv/
+    - /bin/cp -R public_html $DEPLOYPATH
+    - /bin/cp -R includes $DEPLOYPATH
